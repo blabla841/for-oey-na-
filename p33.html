@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ถึงเธอ</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+}
+
+body{
+    background:black;
+    color:white;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.container{
+    max-width:700px;
+    padding:20px;
+}
+
+.line{
+    opacity:0;
+    font-size:1.6rem;
+    margin:25px 0;
+    transition:opacity 1.8s ease;
+}
+
+.show{
+    opacity:1;
+}
+
+.next-btn{
+    margin-top:50px;
+    padding:12px 28px;
+    font-size:1rem;
+    background:white;
+    color:black;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    opacity:0;
+    transition:opacity 1.5s ease;
+}
+
+.next-btn.show{
+    opacity:1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="line" id="l1">ขอบคุณนะ</div>
+    <div class="line" id="l2">ที่ทำให้เค้า</div>
+    <div class="line" id="l3">อยากเป็นตัวเองที่ดีขึ้น</div>
+    <div class="line" id="l4">เพื่อใครสักคนนึง</div>
+
+    <button class="next-btn" id="nextBtn" onclick="goNext()">
+        ไปต่อ
+    </button>
+
+</div>
+
+<script>
+
+const lines = ["l1","l2","l3","l4"];
+const nextBtn = document.getElementById("nextBtn");
+
+lines.forEach((id, index) => {
+    setTimeout(() => {
+        document.getElementById(id).classList.add("show");
+    }, 2000 * (index + 1));
+});
+
+setTimeout(() => {
+    nextBtn.classList.add("show");
+}, 2000 * (lines.length + 1));
+
+function goNext(){
+    window.location.href = "p34.html";
+}
+
+</script>
+
+</body>
+</html>

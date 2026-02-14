@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domeflix - 3.1</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+}
+
+body{
+    background:black;
+    color:white;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+/* ปุ่มกลับ */
+.back{
+    position:absolute;
+    top:20px;
+    left:20px;
+    color:#aaa;
+    cursor:pointer;
+    font-size:0.9rem;
+}
+
+.back:hover{
+    color:white;
+}
+
+/* กล่องข้อความ */
+.container{
+    max-width:700px;
+    padding:20px;
+}
+
+.line{
+    opacity:0;
+    font-size:1.6rem;
+    margin:25px 0;
+    transition:opacity 1.5s ease;
+}
+
+.show{
+    opacity:1;
+}
+
+/* ปุ่ม */
+.buttons{
+    margin-top:50px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    opacity:0;
+    transition:opacity 1s ease;
+}
+
+.buttons.show{
+    opacity:1;
+}
+
+button{
+    padding:12px 30px;
+    border:none;
+    border-radius:4px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.next-btn{
+    background:#e50914;
+    color:white;
+}
+
+.next-btn:hover{
+    background:#ff1e1e;
+}
+
+.profile-btn{
+    background:rgba(109,109,110,0.7);
+    color:white;
+}
+
+.profile-btn:hover{
+    background:rgba(109,109,110,0.4);
+}
+
+/* มือถือ */
+@media(max-width:600px){
+    .line{
+        font-size:1.2rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="back" onclick="goBack()">← กลับ</div>
+
+<div class="container">
+
+    <div class="line" id="l1">ทุกเรื่องราว...</div>
+    <div class="line" id="l2">มีจุดเริ่มต้นของมัน</div>
+    <div class="line" id="l3">และของเรา...</div>
+    <div class="line" id="l4">มันเริ่มต้นในวันที่เราได้รู้จักกัน</div>
+
+    <div class="buttons" id="buttons">
+        <button class="profile-btn" onclick="goBack()">กลับหน้าโปรไฟล์</button>
+        <button class="next-btn" onclick="goNext()">ไปต่อ →</button>
+    </div>
+
+</div>
+
+<script>
+
+/* แสดงข้อความทีละบรรทัด */
+const lines = ["l1","l2","l3","l4"];
+
+lines.forEach((id, index) => {
+    setTimeout(() => {
+        document.getElementById(id).classList.add("show");
+    }, 1500 * (index + 1));
+});
+
+/* แสดงปุ่มหลังข้อความจบ */
+setTimeout(() => {
+    document.getElementById("buttons").classList.add("show");
+}, 1500 * (lines.length + 2));
+
+/* กลับหน้าโปรไฟล์ */
+function goBack(){
+    window.location.href = "profile.html";
+}
+
+/* ไปหน้า p32 */
+function goNext(){
+    window.location.href = "p32.html";
+}
+
+</script>
+
+</body>
+</html>
